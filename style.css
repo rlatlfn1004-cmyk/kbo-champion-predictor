@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f6fb;
+  color: #222;
+}
+.app { max-width: 520px; margin: 0 auto; padding: 24px; }
+header { text-align: center; margin-bottom: 24px; }
+h1 { margin-bottom: 8px; color: #113b74; }
+button {
+  width: 100%; padding: 15px; border: none; border-radius: 14px;
+  background: #113b74; color: white; font-size: 16px; cursor: pointer;
+}
+.game-list { margin-top: 24px; }
+.game-card {
+  background: white; border-radius: 18px; padding: 20px;
+  margin-bottom: 16px; box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+.stadium { font-size: 15px; color: #666; }
+.teams { font-size: 24px; font-weight: bold; margin: 10px 0; }
+.time { font-size: 18px; color: #d35400; font-weight: bold; }
