@@ -3,20 +3,42 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KBO 경기 일정</title>
+  <title>KBO 픽셀 경기 일정</title>
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
-  <div class="app">
-    <header>
-      <h1>⚾ KBO 경기 일정</h1>
-      <p>오늘 어디서, 누가, 몇 시에 경기하는지 확인해보세요.</p>
-    </header>
+  <div class="stadium-light left"></div>
+  <div class="stadium-light right"></div>
 
-    <button onclick="showGames()">오늘 경기 보기</button>
+  <main class="app">
+    <section class="hero">
+      <div class="pixel-player">⚾</div>
+      <div>
+        <p class="badge">8-BIT BASEBALL SCHEDULE</p>
+        <h1>⚾ KBO 경기 일정</h1>
+        <p class="subtitle">오늘 어디서, 누가, 몇 시에 경기하는지 확인하기!</p>
+      </div>
+      <div class="tiger-mark">🐯</div>
+    </section>
+
+    <section class="toolbar">
+      <div class="date-box">
+        <strong>📅 2025.05.24 (토)</strong>
+        <span>오늘 경기 5경기</span>
+      </div>
+      <button class="pixel-btn active" onclick="renderGames()">⚾ 오늘 경기</button>
+      <button class="pixel-btn" onclick="alert('팀 순위 기능은 다음 버전에서 추가!')">🏆 팀 순위</button>
+      <button class="pixel-btn" onclick="alert('날씨 정보 기능은 다음 버전에서 추가!')">☁️ 날씨 정보</button>
+      <button class="pixel-btn refresh" onclick="renderGames()">↻ 새로고침</button>
+    </section>
 
     <section id="gameList" class="game-list"></section>
-  </div>
+
+    <footer>
+      <div class="playball">⚾ PLAY BALL! ⚾</div>
+      <p>KBO와 함께 즐거운 하루 보내세요! ❤ ❤</p>
+    </footer>
+  </main>
 
   <script src="./script.js"></script>
 </body>
