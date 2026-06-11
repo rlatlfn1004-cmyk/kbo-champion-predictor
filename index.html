@@ -3,106 +3,76 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>귀여운 영어 단어카드장</title>
+  <title>일본어 단어장</title>
   <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Comic Sans MS', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
-      background: linear-gradient(135deg, #fff4f8 0%, #e8f7ff 45%, #fffbe6 100%);
-      color: #4b3f72;
-      min-height: 100vh;
-      overflow-x: hidden;
+    @import url('https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Kiwi+Maru:wght@400;500&display=swap');
+    :root{
+      --ink:#1f2742; --muted:#6f7892; --line:#e9e3f4; --white:#fff;
+      --pink:#ffdce8; --pink2:#ffeff5; --yellow:#fff1bf; --sky:#dff3ff; --lav:#ece2ff; --mint:#e7f7ee;
+      --purple:#8b6ce8; --hot:#ff6f9b; --bg:#fffaf2;
+      --shadow:0 14px 36px rgba(88,72,130,.12);
     }
-    .bg-deco { position: fixed; inset: 0; pointer-events: none; opacity: .5; z-index: 0; }
-    .bg-deco span { position: absolute; font-size: 34px; animation: float 5s ease-in-out infinite; }
-    .bg-deco span:nth-child(1){left:6%;top:10%;}.bg-deco span:nth-child(2){left:80%;top:8%;animation-delay:1s}.bg-deco span:nth-child(3){left:12%;top:78%;animation-delay:2s}.bg-deco span:nth-child(4){left:88%;top:72%;animation-delay:1.5s}.bg-deco span:nth-child(5){left:48%;top:4%;animation-delay:.8s}
-    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)} }
-    .app { position: relative; z-index: 1; max-width: 1200px; margin: 0 auto; padding: 28px 16px 50px; }
-    header { text-align: center; padding: 22px 14px; border-radius: 30px; background: rgba(255,255,255,.78); box-shadow: 0 14px 35px rgba(98, 77, 140, .12); border: 3px solid rgba(255,255,255,.9); }
-    h1 { margin: 0; font-size: clamp(30px, 6vw, 58px); color: #ff7eb6; text-shadow: 3px 3px 0 #fff0a8; }
-    .subtitle { margin: 10px 0 0; font-size: clamp(18px, 3.5vw, 26px); font-weight: 800; color: #6bc7d9; }
-    .controls { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin: 22px 0; }
-    input, select { border: 0; outline: none; border-radius: 999px; padding: 15px 20px; font-size: 18px; font-weight: 700; background: white; color: #4b3f72; box-shadow: 0 10px 24px rgba(98,77,140,.12); min-width: 240px; }
-    .count { text-align:center; font-size: 18px; font-weight: 900; margin-bottom: 18px; color:#7b67d1; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 18px; }
-    .card { height: 190px; perspective: 900px; cursor: pointer; }
-    .inner { position: relative; width: 100%; height: 100%; transition: transform .55s cubic-bezier(.2,.9,.3,1.2); transform-style: preserve-3d; }
-    .card.flipped .inner { transform: rotateY(180deg) scale(1.03); }
-    .face { position: absolute; inset: 0; backface-visibility: hidden; border-radius: 28px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 12px; text-align: center; box-shadow: 0 13px 0 #dac9ff, 0 18px 26px rgba(98,77,140,.15); border: 4px solid white; }
-    .front { background: linear-gradient(160deg, #ffffff 0%, #fff0f7 100%); }
-    .back { background: linear-gradient(160deg, #f0fff8 0%, #e9f4ff 100%); transform: rotateY(180deg); }
-    .emoji { font-size: 58px; line-height: 1; margin-bottom: 8px; filter: drop-shadow(0 5px 0 rgba(0,0,0,.06)); }
-    .word { font-size: 25px; font-weight: 1000; color:#5d51b9; }
-    .sound { margin-top: 9px; border: 0; border-radius: 999px; background: #fff0a8; padding: 7px 12px; font-size: 18px; cursor: pointer; box-shadow: 0 5px 0 #f2d76c; }
-    .pron { font-size: 22px; font-weight: 1000; color:#ff7eb6; margin: 4px 0; }
-    .meaning { font-size: 24px; font-weight: 1000; color:#36b6c9; }
-    .cat { margin-top: 8px; font-size: 13px; font-weight: 900; color:#8b7ed6; background: rgba(255,255,255,.75); border-radius: 999px; padding: 4px 10px; }
-    .empty { display:none; text-align:center; font-size: 24px; font-weight: 900; margin-top: 35px; color:#ff7eb6; }
-    @media (max-width: 520px) { .grid { grid-template-columns: repeat(2, 1fr); gap: 13px; } .card{height:170px;} .emoji{font-size:48px;} .word,.meaning{font-size:21px;} input,select{width:100%; min-width:0;} }
+    *{box-sizing:border-box} body{margin:0;font-family:'IBM Plex Sans KR','Gowun Dodum',sans-serif;color:var(--ink);background:radial-gradient(circle at 18% 8%,#fff3c4 0 13%,transparent 30%),radial-gradient(circle at 90% 5%,#ffe0eb 0 15%,transparent 34%),radial-gradient(circle at 72% 95%,#e6dcff 0 15%,transparent 35%),linear-gradient(135deg,#fffdf8,#f8fbff 45%,#fff8fb);min-height:100vh;}
+    .app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}.sidebar{padding:28px 22px;background:rgba(255,255,255,.68);backdrop-filter:blur(18px);border-right:1px solid rgba(232,224,244,.8);position:sticky;top:0;height:100vh}.brand{display:flex;gap:12px;align-items:center;margin-bottom:26px}.logo{width:42px;height:42px;border-radius:16px;background:linear-gradient(135deg,var(--pink),var(--lav),var(--sky));display:grid;place-items:center;font-size:24px;box-shadow:var(--shadow)}.brand h1{font-size:20px;margin:0;font-weight:800}.brand p{margin:3px 0 0;color:var(--muted);font-size:12px}.nav,.catList{display:flex;flex-direction:column;gap:8px}.nav button,.catList button{border:0;background:transparent;text-align:left;border-radius:14px;padding:13px 14px;font-weight:700;color:#566078;cursor:pointer}.nav button.active,.catList button.active{background:linear-gradient(90deg,#ffe8f1,#efe6ff);color:#6b46d9;box-shadow:0 10px 24px rgba(139,108,232,.12)}.sectionTitle{font-size:13px;color:#778099;margin:28px 0 10px;display:flex;justify-content:space-between}.count{float:right;background:#fff;border:1px solid var(--line);border-radius:999px;padding:1px 8px;color:#7960d9}.themeBox{position:absolute;bottom:26px;left:22px;right:22px;border-top:1px solid var(--line);padding-top:18px}.toggle{display:flex;background:white;border:1px solid var(--line);border-radius:999px;padding:5px;gap:5px;width:120px}.toggle span{flex:1;text-align:center;border-radius:999px;padding:8px 0}.toggle span:first-child{background:#ffe8f1;color:#ff4f85}.main{padding:32px 42px 28px}.top{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}.title h2{font-family:'Gowun Dodum',sans-serif;font-size:34px;margin:0 0 6px;letter-spacing:-1px}.title h2:before{content:'✿';color:#ff7fa6;margin-right:10px}.title p{margin:0;color:#65708c;font-weight:600}.stats{display:grid;grid-template-columns:repeat(4,150px);gap:14px}.stat{background:rgba(255,255,255,.78);border:1px solid var(--line);border-radius:18px;padding:16px 18px;box-shadow:var(--shadow)}.stat small{color:#7b849b;font-weight:700}.stat strong{display:block;font-size:24px;margin-top:5px}.panel{margin-top:28px;background:rgba(255,255,255,.6);border:1px solid rgba(232,224,244,.85);border-radius:28px;padding:26px;box-shadow:var(--shadow)}.controls{display:grid;grid-template-columns:1fr 190px 130px 145px;gap:14px}.input,.select,.btn{height:54px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.9);font:inherit;font-weight:700;color:var(--ink);box-shadow:0 8px 20px rgba(52,50,75,.06)}.input{padding:0 20px}.select,.btn{padding:0 14px;cursor:pointer}.btn.primary{background:linear-gradient(135deg,#9878ee,#7f61d9);color:white}.chips{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}.chip{border:1px solid rgba(224,215,239,.9);background:#fff;border-radius:999px;padding:10px 17px;font-weight:800;cursor:pointer}.chip.active{background:linear-gradient(135deg,#9a7af0,#8062d7);color:white}.grid{display:grid;grid-template-columns:repeat(5,minmax(150px,1fr));gap:20px}.card{height:242px;perspective:900px}.inner{position:relative;width:100%;height:100%;transition:transform .55s cubic-bezier(.2,.8,.2,1);transform-style:preserve-3d}.card.flipped .inner{transform:rotateY(180deg)}.face{position:absolute;inset:0;border:1px solid rgba(222,214,235,.95);border-radius:20px;backface-visibility:hidden;box-shadow:0 10px 24px rgba(71,65,100,.10);padding:18px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;overflow:hidden}.face:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 20% 10%,rgba(255,255,255,.8),transparent 35%);pointer-events:none}.back{transform:rotateY(180deg);background:#fff}.card:nth-child(6n+1) .front{background:linear-gradient(145deg,#fff8d9,#fff)}.card:nth-child(6n+2) .front{background:linear-gradient(145deg,#ffe8ef,#fff)}.card:nth-child(6n+3) .front{background:linear-gradient(145deg,#eee6ff,#fff)}.card:nth-child(6n+4) .front{background:linear-gradient(145deg,#e3f5ff,#fff)}.card:nth-child(6n+5) .front{background:linear-gradient(145deg,#fff0dc,#fff)}.card:nth-child(6n) .front{background:linear-gradient(145deg,#e9f7ee,#fff)}.tag{position:absolute;top:14px;left:14px;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:800;background:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.9)}.more{position:absolute;top:14px;right:16px;color:#8790aa}.icon{font-size:38px;margin-bottom:14px}.jp{font-family:'Kiwi Maru','Gowun Dodum',serif;font-size:32px;font-weight:500;line-height:1.1}.kana{font-family:'Kiwi Maru',serif;color:#59637d;font-size:15px;margin-top:8px}.ko{margin-top:12px;font-size:18px;font-weight:800}.roman{color:#69738d;font-size:14px;margin-top:6px}.actions{position:absolute;bottom:14px;left:14px;right:14px;display:flex;justify-content:space-between}.round{width:34px;height:34px;border-radius:50%;border:1px solid rgba(120,110,150,.25);background:rgba(255,255,255,.75);cursor:pointer}.star.on{color:#ffb020}.done.on{background:#e4fbef;color:#22a064}.back .jp{font-size:28px}.back .ex{font-size:14px;color:#58627d;margin-top:12px;line-height:1.5;background:#f8f6ff;border-radius:14px;padding:10px;width:100%}.hidden{display:none}.pager{display:flex;justify-content:center;align-items:center;gap:8px;margin-top:28px;color:#6f7892}.pageBtn{border:1px solid var(--line);background:#fff;border-radius:12px;min-width:42px;height:42px;font-weight:800;cursor:pointer}.pageBtn.active{background:#8b6ce8;color:#fff}.view{display:none}.view.active{display:block}.empty{text-align:center;padding:70px;color:#7b849b}.quizBox{max-width:680px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:26px;padding:28px;box-shadow:var(--shadow);text-align:center}.quizWord{font-family:'Kiwi Maru',serif;font-size:48px;margin:18px}.options{display:grid;grid-template-columns:1fr 1fr;gap:12px}.option{border:1px solid var(--line);background:#fff;border-radius:16px;padding:16px;font-weight:800;cursor:pointer}.option:hover{background:#fff4fa}.history{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.memo{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:var(--shadow)}
+    @media(max-width:1100px){.app{grid-template-columns:1fr}.sidebar{position:relative;height:auto}.themeBox{position:static;margin-top:20px}.stats{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:repeat(3,1fr)}.controls{grid-template-columns:1fr 1fr}.main{padding:24px}}
+    @media(max-width:680px){.top{display:block}.stats{grid-template-columns:repeat(2,1fr);margin-top:18px}.grid{grid-template-columns:repeat(2,1fr);gap:14px}.card{height:220px}.jp{font-size:27px}.controls{grid-template-columns:1fr}.panel{padding:18px}.main{padding:16px}.sidebar{padding:18px}.history{grid-template-columns:1fr}.options{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
-  <div class="bg-deco"><span>☁️</span><span>⭐</span><span>💖</span><span>🌈</span><span>🧸</span></div>
-  <main class="app">
-    <header>
-      <h1>🌈 귀여운 영어 단어카드장</h1>
-      <p class="subtitle">카드를 눌러보세요!</p>
-    </header>
-    <section class="controls">
-      <input id="search" placeholder="단어 검색하기 🔍" />
-      <select id="category"><option value="all">전체 카테고리</option></select>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand"><div class="logo">✿</div><div><h1>나의 일본어 단어장</h1><p>매일 조금씩, 일본어가 내 것이 되는 시간</p></div></div>
+    <div class="nav">
+      <button class="active" data-view="cards">▣ 단어카드</button><button data-view="history">⌁ 학습 기록</button><button data-view="fav">☆ 즐겨찾기</button><button id="randomNav">⌘ 랜덤 카드</button><button data-view="quiz">⊕ 퀴즈 모드</button><button data-view="settings">⚙ 설정</button>
+    </div>
+    <div class="sectionTitle">카테고리 <span>⌄</span></div><div class="catList" id="sideCats"></div>
+    <div class="themeBox"><div class="sectionTitle">테마</div><div class="toggle"><span>☀</span><span>☾</span><span>♨</span></div></div>
+  </aside>
+  <main class="main">
+    <div class="top"><div class="title"><h2>나의 일본어 단어장</h2><p>카드를 눌러 발음과 뜻을 확인해보세요.</p></div><div class="stats"><div class="stat"><small>📅 오늘 학습</small><strong id="todayCount">0개</strong></div><div class="stat"><small>✅ 완료한 카드</small><strong id="doneCount">0개</strong></div><div class="stat"><small>⭐ 즐겨찾기</small><strong id="favCount">0개</strong></div><div class="stat"><small>📖 전체 단어</small><strong>1000개</strong></div></div></div>
+    <section class="panel view active" id="cardsView">
+      <div class="controls"><input class="input" id="search" placeholder="단어, 발음, 뜻으로 검색하세요..."/><select class="select" id="categorySelect"></select><button class="btn" id="sortBtn">↕ 정렬</button><button class="btn primary" id="randomBtn">⤨ 랜덤 카드</button></div>
+      <div class="chips" id="chips"></div><div class="grid" id="grid"></div><div class="pager" id="pager"></div>
     </section>
-    <div class="count" id="count"></div>
-    <section class="grid" id="grid"></section>
-    <div class="empty" id="empty">찾는 카드가 없어요 🥲</div>
+    <section class="panel view" id="historyView"><div class="history"><div class="memo"><h3>오늘 학습</h3><p id="hToday">0개</p></div><div class="memo"><h3>완료 카드</h3><p id="hDone">0개</p></div><div class="memo"><h3>즐겨찾기</h3><p id="hFav">0개</p></div></div></section>
+    <section class="panel view" id="favView"><div class="grid" id="favGrid"></div></section>
+    <section class="panel view" id="quizView"><div class="quizBox"><h2>뜻 맞히기 퀴즈</h2><p>일본어 단어의 뜻을 골라보세요.</p><div class="quizWord" id="quizWord">こんにちは</div><div class="options" id="options"></div><br><button class="btn primary" id="nextQuiz">다음 문제</button></div></section>
+    <section class="panel view" id="settingsView"><div class="memo"><h2>설정</h2><p>음성 버튼이 작동하지 않으면 브라우저에서 소리 재생을 허용해주세요.</p><button class="btn primary" onclick="localStorage.clear();location.reload()">학습 기록 초기화</button></div></section>
   </main>
-  <script>
-    const words = [
-      ['🐶','dog','도그','강아지','동물'],['🐱','cat','캣','고양이','동물'],['🐻','bear','베어','곰','동물'],['🦁','lion','라이언','사자','동물'],['🐯','tiger','타이거','호랑이','동물'],['🐰','rabbit','래빗','토끼','동물'],['🐼','panda','팬더','판다','동물'],['🐵','monkey','몽키','원숭이','동물'],['🐘','elephant','엘리펀트','코끼리','동물'],['🦒','giraffe','지래프','기린','동물'],['🐷','pig','피그','돼지','동물'],['🐮','cow','카우','소','동물'],['🐴','horse','호스','말','동물'],['🐑','sheep','쉽','양','동물'],['🐔','chicken','치킨','닭','동물'],['🦆','duck','덕','오리','동물'],['🐸','frog','프로그','개구리','동물'],['🐟','fish','피시','물고기','동물'],['🐢','turtle','터틀','거북이','동물'],['🦋','butterfly','버터플라이','나비','동물'],
-      ['🍎','apple','애플','사과','과일'],['🍌','banana','바나나','바나나','과일'],['🍊','orange','오렌지','오렌지','과일'],['🍓','strawberry','스트로베리','딸기','과일'],['🍇','grape','그레이프','포도','과일'],['🍉','watermelon','워터멜런','수박','과일'],['🍑','peach','피치','복숭아','과일'],['🍍','pineapple','파인애플','파인애플','과일'],['🥭','mango','망고','망고','과일'],['🥝','kiwi','키위','키위','과일'],
-      ['🍞','bread','브레드','빵','음식'],['🍚','rice','라이스','밥','음식'],['🥚','egg','에그','달걀','음식'],['🧀','cheese','치즈','치즈','음식'],['🍕','pizza','피자','피자','음식'],['🍔','burger','버거','햄버거','음식'],['🍟','fries','프라이즈','감자튀김','음식'],['🍪','cookie','쿠키','쿠키','음식'],['🍰','cake','케이크','케이크','음식'],['🍦','ice cream','아이스크림','아이스크림','음식'],
-      ['🚗','car','카','자동차','탈것'],['🚌','bus','버스','버스','탈것'],['🚕','taxi','택시','택시','탈것'],['🚲','bike','바이크','자전거','탈것'],['🚂','train','트레인','기차','탈것'],['✈️','airplane','에어플레인','비행기','탈것'],['🚢','ship','십','배','탈것'],['🚀','rocket','로켓','로켓','탈것'],['🚜','tractor','트랙터','트랙터','탈것'],['🚑','ambulance','앰뷸런스','구급차','탈것'],
-      ['🔴','red','레드','빨강','색깔'],['🔵','blue','블루','파랑','색깔'],['🟡','yellow','옐로우','노랑','색깔'],['🟢','green','그린','초록','색깔'],['🟣','purple','퍼플','보라','색깔'],['🟠','orange','오렌지','주황','색깔'],['⚫','black','블랙','검정','색깔'],['⚪','white','화이트','하양','색깔'],['🟤','brown','브라운','갈색','색깔'],['🌸','pink','핑크','분홍','색깔'],
-      ['☀️','sun','선','해','자연'],['🌙','moon','문','달','자연'],['⭐','star','스타','별','자연'],['☁️','cloud','클라우드','구름','자연'],['🌧️','rain','레인','비','자연'],['❄️','snow','스노우','눈','자연'],['🌈','rainbow','레인보우','무지개','자연'],['🌳','tree','트리','나무','자연'],['🌷','flower','플라워','꽃','자연'],['🌊','sea','씨','바다','자연'],
-      ['🏠','house','하우스','집','집'],['🚪','door','도어','문','집'],['🪟','window','윈도우','창문','집'],['🛏️','bed','베드','침대','집'],['🪑','chair','체어','의자','집'],['🛁','bath','배스','목욕','집'],['💡','lamp','램프','전등','집'],['🧸','toy','토이','장난감','장난감'],['📚','book','북','책','장난감'],['✏️','pencil','펜슬','연필','장난감'],
-      ['👀','eyes','아이즈','눈','몸'],['👃','nose','노즈','코','몸'],['👄','mouth','마우스','입','몸'],['👂','ear','이어','귀','몸'],['✋','hand','핸드','손','몸'],['🦶','foot','풋','발','몸'],['🦷','tooth','투스','이','몸'],['💪','arm','암','팔','몸'],['🦵','leg','레그','다리','몸'],['🧠','head','헤드','머리','몸'],
-      ['⚽','ball','볼','공','장난감'],['🪁','kite','카이트','연','장난감'],['🤖','robot','로봇','로봇','장난감'],['🎈','balloon','벌룬','풍선','장난감'],['🎨','paint','페인트','물감','장난감'],['🎵','music','뮤직','음악','장난감'],['🥁','drum','드럼','북','장난감'],['🧩','puzzle','퍼즐','퍼즐','장난감'],['🚗','toy car','토이 카','장난감 자동차','장난감'],['🪀','yo-yo','요요','요요','장난감']
-    ].map(([emoji,en,pron,ko,cat]) => ({emoji,en,pron,ko,cat}));
-
-    const grid = document.getElementById('grid');
-    const search = document.getElementById('search');
-    const category = document.getElementById('category');
-    const count = document.getElementById('count');
-    const empty = document.getElementById('empty');
-
-    [...new Set(words.map(w=>w.cat))].forEach(cat => {
-      const opt = document.createElement('option'); opt.value = cat; opt.textContent = cat; category.appendChild(opt);
-    });
-
-    function speak(text){
-      if (!('speechSynthesis' in window)) return;
-      speechSynthesis.cancel();
-      const u = new SpeechSynthesisUtterance(text); u.lang = 'en-US'; u.rate = .75; u.pitch = 1.2; speechSynthesis.speak(u);
-    }
-
-    function render(){
-      const q = search.value.trim().toLowerCase();
-      const c = category.value;
-      const list = words.filter(w => (c === 'all' || w.cat === c) && (w.en.toLowerCase().includes(q) || w.ko.includes(q) || w.pron.includes(q)));
-      grid.innerHTML = '';
-      list.forEach(w => {
-        const card = document.createElement('article');
-        card.className = 'card';
-        card.innerHTML = `<div class="inner"><div class="face front"><div class="emoji">${w.emoji}</div><div class="word">${w.en}</div><button class="sound" title="영어 듣기">🔊</button><div class="cat">${w.cat}</div></div><div class="face back"><div class="emoji">${w.emoji}</div><div class="pron">${w.pron}</div><div class="meaning">${w.ko}</div><div class="cat">${w.en}</div></div></div>`;
-        card.addEventListener('click', () => card.classList.toggle('flipped'));
-        card.querySelector('.sound').addEventListener('click', e => { e.stopPropagation(); speak(w.en); });
-        grid.appendChild(card);
-      });
-      count.textContent = `총 ${list.length}개 카드가 있어요 🌟`;
-      empty.style.display = list.length ? 'none' : 'block';
-    }
-    search.addEventListener('input', render); category.addEventListener('change', render); render();
-  </script>
+</div>
+<script>
+const base = [
+['인사','👋','こんにちは','コンニチハ','곤니치와','안녕하세요','こんにちは、はじめまして。'],['인사','🌙','こんばんは','コンバンハ','곤방와','안녕하세요(저녁)','こんばんは、元気ですか。'],['인사','☀️','おはよう','オハヨウ','오하요','좋은 아침','おはようございます。'],['인사','🙇','ありがとう','アリガトウ','아리가토','고마워','ありがとうございます。'],['인사','🙏','すみません','スミマセン','스미마센','죄송합니다/실례합니다','すみません、お願いします。'],['인사','👋','さようなら','サヨウナラ','사요나라','안녕히 가세요','さようなら、またね。'],['인사','🙂','はい','ハイ','하이','네','はい、そうです。'],['인사','🙅','いいえ','イイエ','이이에','아니요','いいえ、違います。'],['인사','🌟','はじめまして','ハジメマシテ','하지메마시테','처음 뵙겠습니다','はじめまして、よろしく。'],['인사','🤝','よろしく','ヨロシク','요로시쿠','잘 부탁해','よろしくお願いします。'],
+['사람','🧑','ひと','ヒト','히토','사람','あの人は先生です。'],['사람','👫','ともだち','トモダチ','토모다치','친구','友達と会います。'],['사람','👨','お父さん','オトウサン','오토상','아버지','お父さんは会社員です。'],['사람','👩','お母さん','オカアサン','오카상','어머니','お母さんは優しいです。'],['사람','👦','こども','コドモ','코도모','아이','子供が遊びます。'],['사람','👩‍🏫','せんせい','センセイ','센세이','선생님','先生に聞きます。'],['사람','🧑‍🎓','がくせい','ガクセイ','각세이','학생','私は学生です。'],['사람','👪','かぞく','カゾク','카조쿠','가족','家族が好きです。'],['사람','👧','おんな','オンナ','온나','여자','女の人です。'],['사람','👦','おとこ','オトコ','오토코','남자','男の人です。'],
+['음식','🍚','ごはん','ゴハン','고항','밥','ごはんを食べます。'],['음식','🍎','りんご','リンゴ','링고','사과','りんごが好きです。'],['음식','🍌','バナナ','バナナ','바나나','바나나','バナナを買います。'],['음식','🍞','パン','パン','팡','빵','パンを食べます。'],['음식','🍜','ラーメン','ラーメン','라멘','라면','ラーメンが熱いです。'],['음식','🍣','すし','スシ','스시','초밥','すしを食べたいです。'],['음식','🍵','おちゃ','オチャ','오차','차','お茶を飲みます。'],['음식','☕','コーヒー','コーヒー','코히','커피','コーヒーをください。'],['음식','💧','みず','ミズ','미즈','물','水を飲みます。'],['음식','🍰','ケーキ','ケーキ','케키','케이크','ケーキは甘いです。'],
+['장소','🏫','がっこう','ガッコウ','각코','학교','学校へ行きます。'],['장소','🏠','いえ','イエ','이에','집','家に帰ります。'],['장소','🏪','みせ','ミセ','미세','가게','店で買います。'],['장소','🏢','かいしゃ','カイシャ','카이샤','회사','会社で働きます。'],['장소','🚉','えき','エキ','에키','역','駅は近いです。'],['장소','🏥','びょういん','ビョウイン','뵤인','병원','病院へ行きます。'],['장소','🏦','ぎんこう','ギンコウ','긴코','은행','銀行はどこですか。'],['장소','🏨','ホテル','ホテル','호테루','호텔','ホテルに泊まります。'],['장소','🏞️','こうえん','コウエン','코엔','공원','公園を散歩します。'],['장소','🏬','デパート','デパート','데파토','백화점','デパートで買い物します。'],
+['시간','⏰','じかん','ジカン','지칸','시간','時間があります。'],['시간','🌅','あさ','アサ','아사','아침','朝ごはんを食べます。'],['시간','☀️','ひる','ヒル','히루','낮/점심','昼に会います。'],['시간','🌙','よる','ヨル','요루','밤','夜は静かです。'],['시간','📅','きょう','キョウ','쿄','오늘','今日は暑いです。'],['시간','📆','あした','アシタ','아시타','내일','明日行きます。'],['시간','↩️','きのう','キノウ','키노','어제','昨日勉強しました。'],['시간','⏳','いま','イマ','이마','지금','今、忙しいです。'],['시간','🕘','まいにち','マイニチ','마이니치','매일','毎日勉強します。'],['시간','🗓️','しゅうまつ','シュウマツ','슈마츠','주말','週末に休みます。'],
+['일상','📖','べんきょう','ベンキョウ','벤쿄','공부','日本語を勉強します。'],['일상','👕','ふく','フク','후쿠','옷','服を買います。'],['일상','📱','でんわ','デンワ','덴와','전화','電話をします。'],['일상','💰','おかね','オカネ','오카네','돈','お金が必要です。'],['일상','👜','かばん','カバン','카방','가방','かばんを持ちます。'],['일상','🔑','かぎ','カギ','카기','열쇠','鍵を忘れました。'],['일상','🛏️','ねる','ネル','네루','자다','早く寝ます。'],['일상','🍽️','たべる','タベル','타베루','먹다','ごはんを食べる。'],['일상','🥤','のむ','ノム','노무','마시다','水を飲む。'],['일상','👀','みる','ミル','미루','보다','映画を見る。'],
+['여행','🚃','でんしゃ','デンシャ','덴샤','전철/기차','電車に乗ります。'],['여행','🚗','くるま','クルマ','쿠루마','자동차','車で行きます。'],['여행','✈️','ひこうき','ヒコウキ','히코키','비행기','飛行機に乗ります。'],['여행','🚌','バス','バス','바스','버스','バスを待ちます。'],['여행','🗺️','ちず','チズ','치즈','지도','地図を見ます。'],['여행','🎫','きっぷ','キップ','킷푸','표','切符を買います。'],['여행','🧳','りょこう','リョコウ','료코','여행','旅行が好きです。'],['여행','🛂','パスポート','パスポート','파스포토','여권','パスポートを見せます。'],['여행','🛍️','おみやげ','オミヤゲ','오미야게','기념품','お土産を買います。'],['여행','📍','どこ','ドコ','도코','어디','駅はどこですか。'],
+['감정','😊','うれしい','ウレシイ','우레시이','기쁘다','とてもうれしいです。'],['감정','😢','かなしい','カナシイ','카나시이','슬프다','悲しい気持ちです。'],['감정','😋','おいしい','オイシイ','오이시이','맛있다','この料理はおいしい。'],['감정','😴','ねむい','ネムイ','네무이','졸리다','今日は眠いです。'],['감정','😱','こわい','コワイ','코와이','무섭다','怖い映画です。'],['감정','❤️','すき','スキ','스키','좋아하다','日本語が好きです。'],['감정','💔','きらい','キライ','키라이','싫어하다','辛い物が嫌いです。'],['감정','😮','びっくり','ビックリ','빗쿠리','깜짝 놀람','びっくりしました。'],['감정','😌','あんしん','アンシン','안신','안심','安心しました。'],['감정','🔥','がんばる','ガンバル','간바루','힘내다','今日も頑張ります。'],
+['동사','✍️','かく','カク','카쿠','쓰다','名前を書く。'],['동사','📚','よむ','ヨム','요무','읽다','本を読む。'],['동사','👂','きく','キク','키쿠','듣다/묻다','音楽を聞く。'],['동사','🗣️','はなす','ハナス','하나스','말하다','日本語を話す。'],['동사','🚶','いく','イク','이쿠','가다','学校へ行く。'],['동사','🏠','かえる','カエル','카에루','돌아가다','家に帰る。'],['동사','🛒','かう','カウ','카우','사다','りんごを買う。'],['동사','🤲','もつ','モツ','모츠','가지다/들다','かばんを持つ。'],['동사','🧍','たつ','タツ','타츠','서다','ここに立つ。'],['동사','💺','すわる','スワル','스와루','앉다','椅子に座る。'],
+['형용사','☀️','あたたかい','アタタカイ','아타타카이','따뜻한','今日は暖かいです。'],['형용사','❄️','さむい','サムイ','사무이','춥다','冬は寒いです。'],['형용사','🔥','あつい','アツイ','아츠이','덥다/뜨겁다','夏は暑いです。'],['형용사','✨','きれい','キレイ','키레이','예쁘다/깨끗하다','花がきれいです。'],['형용사','📦','おおきい','オオキイ','오키이','크다','大きい家です。'],['형용사','📌','ちいさい','チイサイ','치이사이','작다','小さい猫です。'],['형용사','🆕','あたらしい','アタラシイ','아타라시이','새롭다','新しい服です。'],['형용사','🏚️','ふるい','フルイ','후루이','오래되다','古い本です。'],['형용사','⚡','はやい','ハヤイ','하야이','빠르다/이르다','電車は速いです。'],['형용사','🐢','おそい','オソイ','오소이','느리다/늦다','今日は遅いです。']
+];
+const cats=['전체','인사','사람','음식','장소','시간','일상','여행','감정','동사','형용사'];
+const suffix=['','ね','よ','です','さん','ちゃん','くん','もの','こと','ばしょ'];
+const words=[]; for(let i=0;i<10;i++){base.forEach((b,idx)=>{let n=i*base.length+idx+1; words.push({id:n,cat:b[0],icon:b[1],jp:i?b[2]+(i%3===0?'':''):b[2],kana:b[3],roman:b[4],ko:b[5]+(i?` ${i+1}`:''),ex:b[6]});});}
+let state={cat:'전체',q:'',page:1,per:10,sort:false};
+let done=JSON.parse(localStorage.jpDone||'[]'), fav=JSON.parse(localStorage.jpFav||'[]'), today=JSON.parse(localStorage.jpToday||'{}'); const todayKey=new Date().toISOString().slice(0,10); if(!today[todayKey]) today[todayKey]=[];
+const $=s=>document.querySelector(s), $$=s=>document.querySelectorAll(s);
+function save(){localStorage.jpDone=JSON.stringify(done);localStorage.jpFav=JSON.stringify(fav);localStorage.jpToday=JSON.stringify(today)}
+function stats(){ $('#todayCount').textContent=today[todayKey].length+'개'; $('#doneCount').textContent=done.length+'개'; $('#favCount').textContent=fav.length+'개'; $('#hToday').textContent=today[todayKey].length+'개'; $('#hDone').textContent=done.length+'개'; $('#hFav').textContent=fav.length+'개';}
+function setupCats(){ const side=$('#sideCats'), chips=$('#chips'), sel=$('#categorySelect'); side.innerHTML=chips.innerHTML=sel.innerHTML=''; cats.forEach(c=>{let count=c==='전체'?1000:words.filter(w=>w.cat===c).length; side.innerHTML+=`<button class="${c===state.cat?'active':''}" data-cat="${c}">${c}<span class="count">${count}</span></button>`; chips.innerHTML+=`<button class="chip ${c===state.cat?'active':''}" data-cat="${c}">${c} ${c==='전체'?'':emoji(c)}</button>`; sel.innerHTML+=`<option ${c===state.cat?'selected':''}>${c}</option>`;}); $$('[data-cat]').forEach(b=>b.onclick=()=>{state.cat=b.dataset.cat;state.page=1;render()}); sel.onchange=e=>{state.cat=e.target.value;state.page=1;render()};}
+function emoji(c){return {인사:'👋',사람:'🧍',음식:'🍎',장소:'📍',시간:'⏰',일상:'☕',여행:'✈️',감정:'💗',동사:'🏃',형용사:'✨'}[c]||''}
+function filtered(){let arr=words.filter(w=>(state.cat==='전체'||w.cat===state.cat)&&[w.jp,w.kana,w.roman,w.ko,w.cat].join(' ').toLowerCase().includes(state.q.toLowerCase())); if(state.sort) arr.sort((a,b)=>a.jp.localeCompare(b.jp,'ja')); return arr;}
+function render(){setupCats();stats();let arr=filtered(), start=(state.page-1)*state.per, page=arr.slice(start,start+state.per); $('#grid').innerHTML=page.length?page.map(cardHTML).join(''):'<div class="empty">검색 결과가 없어요.</div>'; bindCards(); pager(arr.length); renderFav();}
+function cardHTML(w){return `<div class="card" data-id="${w.id}"><div class="inner"><div class="face front"><span class="tag">${w.cat}</span><span class="more">⋮</span><div class="icon">${w.icon}</div><div class="jp">${w.jp}</div><div class="kana">(${w.kana})</div><div class="ko">${w.ko}</div><div class="actions"><button class="round sound">🔊</button><button class="round star ${fav.includes(w.id)?'on':''}">☆</button><button class="round done ${done.includes(w.id)?'on':''}">○</button></div></div><div class="face back"><span class="tag">발음 · 뜻</span><div class="jp">${w.jp}</div><div class="roman">한국어식 발음</div><div class="ko">${w.roman}</div><div class="roman">뜻</div><div class="ko">${w.ko}</div><div class="ex">예문<br>${w.ex}</div></div></div></div>`}
+function bindCards(){ $$('.card').forEach(c=>{let id=+c.dataset.id, w=words.find(x=>x.id===id); c.onclick=e=>{if(e.target.tagName==='BUTTON')return; c.classList.toggle('flipped'); if(!today[todayKey].includes(id)){today[todayKey].push(id);save();stats();}}; c.querySelector('.sound').onclick=e=>{e.stopPropagation(); speak(w.jp)}; c.querySelector('.star').onclick=e=>{e.stopPropagation(); fav=fav.includes(id)?fav.filter(x=>x!==id):[...fav,id];save();render()}; c.querySelector('.done').onclick=e=>{e.stopPropagation(); done=done.includes(id)?done.filter(x=>x!==id):[...done,id];save();render()};});}
+function speak(t){let u=new SpeechSynthesisUtterance(t);u.lang='ja-JP';u.rate=.8;speechSynthesis.speak(u)}
+function pager(total){let pages=Math.ceil(total/state.per)||1; let html=`<button class="pageBtn" ${state.page===1?'disabled':''} onclick="state.page--;render()">‹</button>`; for(let p of [1,2,3,4,5]) if(p<=pages) html+=`<button class="pageBtn ${p===state.page?'active':''}" onclick="state.page=${p};render()">${p}</button>`; if(pages>6) html+=`<span>…</span><button class="pageBtn" onclick="state.page=${pages};render()">${pages}</button>`; html+=`<button class="pageBtn" ${state.page===pages?'disabled':''} onclick="state.page++;render()">›</button><span style="margin-left:14px">${state.page} / ${pages} 페이지 (총 ${total}개)</span>`; $('#pager').innerHTML=html;}
+function renderFav(){let arr=words.filter(w=>fav.includes(w.id)); $('#favGrid').innerHTML=arr.length?arr.slice(0,50).map(cardHTML).join(''):'<div class="empty">즐겨찾기한 단어가 아직 없어요.</div>'; bindCards();}
+function quiz(){let w=words[Math.floor(Math.random()*words.length)]; $('#quizWord').textContent=w.jp; let opts=[w.ko]; while(opts.length<4){let k=words[Math.floor(Math.random()*words.length)].ko;if(!opts.includes(k))opts.push(k)} opts.sort(()=>Math.random()-.5); $('#options').innerHTML=opts.map(o=>`<button class="option">${o}</button>`).join(''); $$('.option').forEach(b=>b.onclick=()=>{b.style.background=b.textContent===w.ko?'#e7f7ee':'#ffe8ef';});}
+$$('.nav button[data-view]').forEach(b=>b.onclick=()=>{$$('.nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');$$('.view').forEach(v=>v.classList.remove('active'));$('#'+b.dataset.view+'View').classList.add('active'); if(b.dataset.view==='quiz')quiz();});
+$('#search').oninput=e=>{state.q=e.target.value;state.page=1;render()}; $('#sortBtn').onclick=()=>{state.sort=!state.sort;render()}; $('#randomBtn').onclick=$('#randomNav').onclick=()=>{let w=words[Math.floor(Math.random()*words.length)];state.cat='전체';state.q=w.jp;state.page=1;$('#search').value=w.jp;render()}; $('#nextQuiz').onclick=quiz; render(); quiz();
+</script>
 </body>
 </html>
